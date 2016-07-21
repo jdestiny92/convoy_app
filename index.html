@@ -22,8 +22,27 @@
     <script>
       var map;
 
-      var myLatLng = {lat: 40.656813, lng: -74.207110};
+      function initialize() {
 
+     // Is HTML5 geolocation supported
+     if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position){
+
+           var lat = position.coords.latitude;
+           var lng = position.coords.longitude;
+           //..
+           console.log(lat);
+
+        });
+     } 
+     else{
+      console.log('Doesnt work');
+     }
+    }
+
+    initialize();          
+
+      var myLatLng = {lat: 40.656813, lng: -74.207110};
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
